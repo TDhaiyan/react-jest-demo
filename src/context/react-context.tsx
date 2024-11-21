@@ -2,7 +2,7 @@ import * as React from 'react'
 
 const NameContext = React.createContext('Unknown')
 
-const NameProvider = ({children, first, last}) => {
+const NameProvider = ({children, first, last}: {children: React.ReactNode, first: string, last: string}) => {
   const fullName = `${first} ${last}`
   return (
     <NameContext.Provider value={fullName}>{children}</NameContext.Provider>

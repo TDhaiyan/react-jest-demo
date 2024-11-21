@@ -2,7 +2,6 @@
 
 #### summary
 
-https://github.com/Talkdesk/dispositions-ui/pull/499
 
 * package.json add unit test coverage
 * check jest config to generate coverage file
@@ -11,7 +10,7 @@ https://github.com/Talkdesk/dispositions-ui/pull/499
 *  Create a new Sonarqube configuration file in the project root directory: sonar-project.properties
 
 
-link https://talkdesk.atlassian.net/wiki/spaces/INDUSTRIES/pages/4131225827/How+to+integrate+Sonarqube
+
 
 #### package
 
@@ -29,7 +28,7 @@ link https://talkdesk.atlassian.net/wiki/spaces/INDUSTRIES/pages/4131225827/How+
       "\\.(css|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/mocks/fileMock.js"
     },
     "globals": {
-      "__TALKDESK_API_URL__": "https://TEST_API_GATEWAY_URL.com"
+    
     },
     "roots": [
       "<rootDir>/src"
@@ -123,7 +122,7 @@ docker-compose.yml
     command: yarn build
 
   sonarqube:
-    image: hub.talkdeskapp.com/sonarsource/sonar-scanner-cli:5.0.1
+    image: hub.xxx.com/sonarsource/sonar-scanner-cli:5.0.1
     command: 
       sonar-scanner 
       -Dproject.settings=/usr/src/app/sonar-project.properties
@@ -141,7 +140,7 @@ docker-compose.yml
       - GIT_BRANCH=${GIT_BRANCH} 
 
   sonarqube_pr:
-    image: hub.talkdeskapp.com/sonarsource/sonar-scanner-cli:5.0.1
+    image: hub.xxx.com/sonarsource/sonar-scanner-cli:5.0.1
     command: 
       sonar-scanner
       -Dproject.settings=/usr/src/app/sonar-project.properties
