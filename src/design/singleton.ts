@@ -1,3 +1,6 @@
+/**
+ * Singleton class
+ */
 type InstanceFactory<T, K> = (option: K) => T
 
 export class Singleton<T, K> {
