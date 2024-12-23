@@ -1,29 +1,29 @@
-import DemoPage from "./index";
+import TodoPage from "./index";
 import { DesktopOutlined } from '@ant-design/icons'
 import { AdminRouterItem } from "../../router";
-import DemoChart from "./chart";
+import Detail from "./detail";
 
-const demoRoutes: AdminRouterItem[] = [
+const todoRoutes: AdminRouterItem[] = [
   {
-    path: 'demo',
-    element: <DemoPage />,
+    path: 'graph',
+    element: <TodoPage />,
     meta: {
-      label: "Demo",
-      title: "Demo",
-      key: "/demo",
+      label: "graph",
+      title: "graph",
+      key: "/graph",
       icon: <DesktopOutlined />,
     },
     children: [{
       path: 'chart',
-      element: <DemoChart />,
+      element: <Detail />,
       meta: {
         label: "chart",
         title: "chart",
-        key: "/demo/chart",
+        key: "/graph/chart",
         icon: <DesktopOutlined />,
       }
     }]
   },
 ]
 
-export default demoRoutes
+export default todoRoutes

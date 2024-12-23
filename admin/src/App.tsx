@@ -10,7 +10,7 @@ const App: React.FC = () => {
 
   if (window.location.pathname === '/') {
     setTimeout(() => {
-      navigate('/demo')
+      navigate('/graph')
     })
   }
 
