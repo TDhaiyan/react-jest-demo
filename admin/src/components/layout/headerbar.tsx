@@ -13,15 +13,14 @@ const headerbarSchema= z.object({
 type HeaderbarSchema = z.infer<typeof headerbarSchema>;
 
 const Headerbar = (props: HeaderbarSchema) => {
-  const setAlgorithm = useConfigStore(state => state.setAlgorithm)
-  const setCompactAlgorithm = useConfigStore(state => state.setCompactAlgorithm)
+  const setTheme = useConfigStore(state => state.setTheme)
 
   return (
     <Header title='React Admin' style={{ padding: 0, background: props.colorBgContainer }}>
       <div style={{ display: 'flex', alignItems: 'center', height: '100%', padding: "0 20px", justifyContent: 'space-between' }}>
         <h2>React Admin</h2>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <Switch checkedChildren="Light" unCheckedChildren="Dark" defaultChecked onChange={(checked) => setAlgorithm(checked ? 'default' : 'dark')} />
+          <Switch checkedChildren="Light" unCheckedChildren="Dark" defaultChecked onChange={(checked) => setTheme(checked ? 'default' : 'dark')} />
           <p style={{ marginRight: 10 }}>admin</p>
           <GithubOutlined style={{ fontSize: 30 }} onClick={() => window.open('https://github.com/TDhaiyan/react-admin')} />
         </div>
