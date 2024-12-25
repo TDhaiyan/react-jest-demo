@@ -16,13 +16,13 @@ const Headerbar = (props: HeaderbarSchema) => {
   const setTheme = useConfigStore(state => state.setTheme)
 
   return (
-    <Header title='React Admin' style={{ padding: 0, background: props.colorBgContainer }}>
+    <Header title='admin' style={{ padding: 0, background: props.colorBgContainer }}>
       <div style={{ display: 'flex', alignItems: 'center', height: '100%', padding: "0 20px", justifyContent: 'space-between' }}>
-        <h2>React Admin</h2>
+        <h2>Admin</h2>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Switch checkedChildren="Light" unCheckedChildren="Dark" defaultChecked onChange={(checked) => setTheme(checked ? 'default' : 'dark')} />
           <p style={{ marginRight: 10 }}>admin</p>
-          <GithubOutlined style={{ fontSize: 30 }} onClick={() => window.open('https://github.com/TDhaiyan/react-admin')} />
+          <GithubOutlined style={{ fontSize: 30 }} onClick={() => window.open('https://github.com/TDhaiyan/react-jest-demo/tree/main/admin')} />
         </div>
       </div>
     </Header>

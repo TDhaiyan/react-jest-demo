@@ -1,10 +1,10 @@
 import React from 'react';
-
 import { Layout, theme } from 'antd';
 import PageSidebar from './sidebar';
 import PageContent from './contentbar';
 import PageBreadcrumb from './breadcrumb';
 import Headerbar from './headerbar';
+import dayjs from 'dayjs';
 
 const { Footer } = Layout;
 
@@ -21,7 +21,7 @@ const PageLayout: React.FC = () => {
         <PageBreadcrumb />
         <PageContent></PageContent>
         <Footer style={{ textAlign: 'center' }}>
-          React Admin
+          {dayjs().format('YYYY-MM-DD')}
         </Footer>
       </Layout>
     </Layout>
