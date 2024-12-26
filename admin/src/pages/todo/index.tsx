@@ -1,8 +1,10 @@
 import React , { useState }from 'react';
-import { Table , Tag} from 'antd';
+import { Table, Tag, Button } from 'antd';
 import z from 'zod';
 import type {  TableProps } from 'antd';
 import { dataSource, ItemSchema} from '../mockData/data.ts';
+import { useNavigate } from 'react-router-dom';
+
 
 const colorMap= {
   'done':'green',
@@ -75,7 +77,8 @@ const columns = [
 
 
 const TodoPage: React.FC = () => {
-  const [selectionKey, setSelectionKey] = useState<React.Key[]>([]);
+  const [selectionKey, setSelectionKey] = useState<React.Key[]>([])
+  const navigate = useNavigate()
 
   const rowSelection: TableProps< z.infer<typeof ItemSchema>>['rowSelection'] = {
     onChange: (selectedRowKeys: React.Key[], selectedRows: z.infer<typeof ItemSchema>[]) => {
@@ -88,13 +91,21 @@ const TodoPage: React.FC = () => {
       disabled: record.name === 'Name',
       name: record.name,
     }),
-  };
+  }
+
+  const gotoDetail = () => {
+    window.location.href = `/todo/detail`
+  }
 
 
-  return <Table
-  rowSelection={{ ...rowSelection }}
+  return (
+  <>
+    <Button type="primary" style={{marginBottom: 12 }} onClick={gotoDetail}>New</Button>
 
-  dataSource={dataSource} columns={columns} />
+    <Table rowSelection={{ ...rowSelection }} dataSource={dataSource} columns={columns} />
+  </>
+
+  )
 };
 
 export default TodoPage;

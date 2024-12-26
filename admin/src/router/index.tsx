@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { MenuItemType } from "antd/es/menu/interface";
 import z from 'zod'
@@ -8,6 +8,7 @@ const RouteObjectSchema = z.object({
   path: z.string(),
   element: z.any().optional(),
   children: z.array(z.lazy((): z.ZodTypeAny => RouteObjectSchema)).optional(),
+  display: z.boolean().optional().default(true)
 });
 
 export type AdminRouterItem = z.infer<typeof RouteObjectSchema> & {
@@ -33,10 +34,9 @@ const loadRouteModules = async () => {
 
     if (module) {
       const routes = Array.isArray(module) ? module : [module];
-      routeModules.push(...routes);
+      routeModules.push(...routes.filter(route => route.display !== false));
     }
   }
-
 
   return routeModules
 }
