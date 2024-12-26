@@ -7,33 +7,22 @@ const todoRoutes: AdminRouterItem[] = [
   {
     path: '/todo',
     element: <TodoPage />,
+    display: true,
     meta: {
       label: "todo",
       title: "todo",
       key: "/todo",
       icon: <DesktopOutlined />,
-    },
-    children: [{
-      path: '',
-      element: <TodoPage />,
-      meta: {
-        label: "todo",
-        title: "todo",
-        key: "/todo",
-        icon: <DesktopOutlined />,
-      }
-    },
-
-  ]
+    }
   },
   {
-    path: '/todo/detail',
+    path: '/detail',
     element: <Detail />,
     display: false,
     meta: {
       label: "detail",
       title: "detail",
-      key: "/todo",
+      key: "/detail",
       icon: <DesktopOutlined />,
     }
   }

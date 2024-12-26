@@ -56,7 +56,7 @@ const columns = [
   //   key: 'action',
   //   render: (row: any,) => {
   //     return (
-  //       <a href={`/todo/${row.key}`}>edit
+  //       <a href={`/edit/${row.key}`}>edit
   //       </a>)
   //   }
   // },
@@ -94,7 +94,7 @@ const TodoPage: React.FC = () => {
   }
 
   const gotoDetail = () => {
-    window.location.href = `/todo/detail`
+    navigate(`/detail`)
   }
 
 

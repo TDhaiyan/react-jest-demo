@@ -34,7 +34,7 @@ const loadRouteModules = async () => {
 
     if (module) {
       const routes = Array.isArray(module) ? module : [module];
-      routeModules.push(...routes.filter(route => route.display !== false));
+      routeModules.push(...routes);
     }
   }
 
