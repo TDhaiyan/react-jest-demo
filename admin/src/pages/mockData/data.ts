@@ -12,7 +12,7 @@ export const ItemSchema = z.object({
 
 const ItemArraySchema = z.array(ItemSchema);
 
-export const dataSource: z.infer<typeof ItemArraySchema> = [
+export let dataSource: z.infer<typeof ItemArraySchema> = [
   {
     key: '1',
     priority: '1',

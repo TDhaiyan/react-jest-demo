@@ -2,7 +2,7 @@ import TodoPage from "./index"
 import { DesktopOutlined } from '@ant-design/icons'
 import { AdminRouterItem } from "../../router"
 import Detail from "./detail"
-import Form from "./form"
+import FormAnd from "./form-and"
 
 const todoRoutes: AdminRouterItem[] = [
   {
@@ -29,7 +29,7 @@ const todoRoutes: AdminRouterItem[] = [
   },
   {
     path: '/form',
-    element: <Form/>,
+    element: <FormAnd/>,
     display: false,
     meta: {
       label: "form",
