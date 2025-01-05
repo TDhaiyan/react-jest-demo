@@ -3,6 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { Form, Input, Button, message, Select, DatePicker } from 'antd';
 import { dataSource } from '../../mockData/data';
 import { useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
 
 interface FormData {
   priority: string;
@@ -13,6 +14,11 @@ interface FormData {
   status: "done" | "in progress" | "todo";
   key: string;
 }
+
+
+const SubmitButton = styled(Button)`
+  max-width: 100px;
+  margin-top: 12px;`
 
 const Detail: React.FC = () => {
   const navigate = useNavigate()
@@ -30,9 +36,8 @@ const Detail: React.FC = () => {
 
   return (
     <Form
-      layout="vertical"
       onFinish={handleSubmit(onSubmit)}
-      style={{ maxWidth: 400, margin: '0 auto' }}
+      style={{ maxWidth: 600 }}
     >
       <Form.Item
         label="priority"
@@ -116,9 +121,9 @@ const Detail: React.FC = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" block>
+        <SubmitButton type="primary" htmlType="submit" block>
          submit
-        </Button>
+        </SubmitButton>
       </Form.Item>
     </Form>
   );
