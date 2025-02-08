@@ -3,14 +3,20 @@ import z from 'zod';
 export const ItemSchema = z.object({
   key: z.string(),
   priority: z.string(),
-  name: z.string(),
+  name: z.string().max(10),
   time: z.string(),
   deadline: z.string(),
   status: z.enum(['done', 'in progress', 'todo']),
-  description: z.string(),
+  description: z.string().min(10).max(1000),
 });
 
-const ItemArraySchema = z.array(ItemSchema);
+export const ItemArraySchema = z.array(ItemSchema);
+
+
+export type FormData = z.infer<typeof ItemArraySchema>;
+
+
+const parssedData = ItemSchema.safeParse({})
 
 export let dataSource: z.infer<typeof ItemArraySchema> = [
   {

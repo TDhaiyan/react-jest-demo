@@ -4,16 +4,18 @@ import { Form, Input, Button, message, Select, DatePicker } from 'antd';
 import { dataSource } from '../../mockData/data';
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { ItemSchema } from '../../mockData/data';
+import z from 'zod';
 
-interface FormData {
-  priority: string;
-  name: string;
-  description: string;
-  time: string;
-  deadline: string;
-  status: "done" | "in progress" | "todo";
-  key: string;
-}
+// interface FormData {
+//   priority: string;
+//   name: string;
+//   description: string;
+//   time: string;
+//   deadline: string;
+//   status: "done" | "in progress" | "todo";
+//   key: string;
+// }
 
 
 const SubmitButton = styled(Button)`
@@ -22,14 +24,21 @@ const SubmitButton = styled(Button)`
 
 const Detail: React.FC = () => {
   const navigate = useNavigate()
-  const { control, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const { control, handleSubmit, formState: { errors } } = useForm<z.infer<typeof ItemSchema>>();
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = (data: unknown) => {
     const formDataWithKey = {
       ...data,
       key: Date.now().toString()
     };
-    dataSource.push(formDataWithKey);
+
+    const res = ItemSchema.safeParse(formDataWithKey)
+
+    if (!res.success) {
+      message.error(res.error.errors[0].message)
+      return
+    }
+    dataSource.push(res.data);
     navigate('/todo')
     message.success('successful!');
   };

@@ -3,6 +3,7 @@ import viteLogo from './assets/vite.svg';
 import { counterActions } from './redux/counter/slice';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { Counter } from './components';
+import { useState } from 'react'
 
 import './App.css';
 
@@ -27,6 +28,18 @@ function App() {
     dispatch(counterActions.decrementAsync());
   };
 
+
+  // https://codesandbox.io/p/sandbox/spring-water-929i6?file=%2Fsrc%2Findex.js
+
+    const [count, setCount] = useState(0);
+    const [flag, setFlag] = useState(false);
+
+    function handleClick() {
+      setCount(c => c + 1); // Does not re-render yet
+      setFlag(f => !f); // Does not re-render yet
+      // React will only re-render once at the end (that's batching!)
+    }
+
   return (
     <>
       <div>
@@ -49,6 +62,13 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
+
+        <div>
+        <button onClick={handleClick}>Next</button>
+        <h1 style={{ color: flag ? "blue" : "black" }}>{count}</h1>
+      </div>
+
+
       </div>
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </>
