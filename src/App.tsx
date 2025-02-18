@@ -1,9 +1,12 @@
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
+// import reactLogo from './assets/react.svg';
+// import viteLogo from './assets/vite.svg';
 import { counterActions } from './redux/counter/slice';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
-import { Counter } from './components';
-import { useState } from 'react'
+// import { Counter } from './components';
+import { useState, Suspense } from 'react'
+import {Page} from './useTest'
+import {User} from './Suspense'
+// import { ErrorBoundary } from 'react-error-boundary'
 
 import './App.css';
 
@@ -42,7 +45,7 @@ function App() {
 
   return (
     <>
-      <div>
+      {/* <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -66,10 +69,21 @@ function App() {
         <div>
         <button onClick={handleClick}>Next</button>
         <h1 style={{ color: flag ? "blue" : "black" }}>{count}</h1>
-      </div>
+      </div> */}
 
 
+      {/* </div> */}
+
+      <Page ></Page>
+
+      <div className="App">
+        {/* <ErrorBoundary FallbackComponent={<p>Error.....</p>}> */}
+          <Suspense fallback={<p>Loading.....</p>}>
+            <User/>
+          </Suspense>
+          {/* </ErrorBoundary> */}
       </div>
+
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </>
   );

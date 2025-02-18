@@ -72,9 +72,10 @@ describe("AsyncButton component", () => {
     userEvent.click(buttonElement);
 
     // 快进时间 500ms，触发 setTimeout 回调
-    act(() => {
-      jest.advanceTimersByTime(500);
-    });
+    jest.advanceTimersByTime(500);
+    // act(() => {
+    //   jest.advanceTimersByTime(500);
+    // });
 
     const countElement = await screen.findByText('11');
     expect(countElement).toHaveStyle({ color: 'blue' });
@@ -84,7 +85,6 @@ describe("AsyncButton component", () => {
     act(() => {
       jest.advanceTimersByTime(500);
     });
-
 
     const updatedCountElement = await screen.findByText('12');
     expect(updatedCountElement).toHaveStyle({ color: 'black' });
