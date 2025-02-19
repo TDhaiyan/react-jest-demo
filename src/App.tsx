@@ -3,12 +3,19 @@
 import { counterActions } from './redux/counter/slice';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 // import { Counter } from './components';
-import { useState, Suspense } from 'react'
+import React, { useState, Suspense } from 'react'
 import {Page} from './useTest'
 import {User} from './Suspense'
+
+import PostsComponent from './components/Suspense/PostsComponent';
+
+
 // import { ErrorBoundary } from 'react-error-boundary'
 
 import './App.css';
+
+
+const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
 function App() {
   const dispatch = useAppDispatch();
@@ -76,13 +83,29 @@ function App() {
 
       <Page ></Page>
 
+      <div>
+        <h1>Lazy Component and Suspense</h1>
+        <Suspense fallback={<p>lazycomponent Loading.....</p>}>
+          <LazyComponent />
+        </Suspense>
+      </div>
+
       <div className="App">
+         <h1>Using Suspense for Data Fetching </h1>
         {/* <ErrorBoundary FallbackComponent={<p>Error.....</p>}> */}
-          <Suspense fallback={<p>Loading.....</p>}>
+          <Suspense fallback={<p>Using Suspense for Data Fetching  Loading.....</p>}>
             <User/>
           </Suspense>
           {/* </ErrorBoundary> */}
       </div>
+
+      <div className="App">
+        <Suspense fallback={<div>Loading Posts...</div>}>
+          <PostsComponent />
+        </Suspense>
+      </div>
+
+
 
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </>

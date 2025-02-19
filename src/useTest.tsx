@@ -24,7 +24,7 @@ function Comments() {
 
   useEffect(() => {
     promise.then((value) => {
-      console.log('comments', value)
+      // console.log('comments', value)
       setFlag(true)
 
       setComments(value)
